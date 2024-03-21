@@ -15,6 +15,9 @@ import AGWMetaBars from './components/AGWAppsMetaWidget.vue'
 import AGWCategories from './components/AGWDocsCategories.vue'
 import AGWGallery from './components/AGWGallery.vue'
 
+import NolebaseGitChangelog from './components/githubchanges/components/Changelog.vue'
+import NolebaseGitContributors from './components/githubchanges/components/Contributors.vue'
+
 import { locales } from '../../_data/enhanced-readabilities'
 
 import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
@@ -52,6 +55,8 @@ export default {
     }),
     ctx.app.component('AGWGallery', AGWGallery);
     ctx.app.component('AGWCategories', AGWCategories)
+    ctx.app.component('NolebaseGitContributors', NolebaseGitContributors)
+    ctx.app.component('NolebaseGitChangelog', NolebaseGitChangelog)
     enhanceAppWithTabs(ctx.app)
   },
   setup() {

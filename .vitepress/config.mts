@@ -11,12 +11,56 @@ import markdownItEmbed from 'markdown-it-html5-embed'
 import markdownItConditionalRender from 'markdown-it-conditional-render'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs' 
 
+import UnoCSS from 'unocss/vite'
+
+import { 
+  GitChangelog,
+  GitChangelogMarkdownSection 
+} from '@nolebase/vitepress-plugin-git-changelog/vite'
+
 import * as config from './config.json'
 
 export const META_DESCRIPTION = 'Свободная WIKI по операционной системе ALT Regular Gnome'
 
+
+
 export default defineConfig({
   vite: {
+    plugins: [
+      UnoCSS(),
+      GitChangelog({
+        //maxGitLogCount: 2000,
+        repoURL: () => 'https://github.com/OlegShchavelev/ALTRegularGnomeWiki',
+        rewritePaths: {
+          'docs/apps/': '',
+          'docs/developers/': '',
+          'docs/equipment/': '',
+          'docs/extensions/': '',
+          'docs/reference/': '',
+          'docs/system/': '',
+          'docs/tips/': '',
+          'docs/using_gnome/':'',
+        },
+      }),
+      GitChangelogMarkdownSection({
+        getChangelogTitle: (_, __, { helpers }): string => {
+          return 'История изменений'
+        },
+        getContributorsTitle: (_, __, { helpers }): string => {
+          return 'Авторы'
+        },
+        excludes: [],
+        exclude: (_, { helpers }): boolean => {
+          if (helpers.idEquals('docs/main/wiki.md'))
+            return true
+          if (helpers.idEquals('docs/main/contributions.md'))
+            return true
+          if (helpers.idEquals('docs/main/about.md'))
+            return true
+          return false
+        },
+      }),
+    ],
     ssr: {
       noExternal: [
         '@nolebase/vitepress-plugin-enhanced-readabilities',

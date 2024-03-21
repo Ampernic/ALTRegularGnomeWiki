@@ -6,6 +6,7 @@
     "@types/markdown-it": "^13.0.5",
     "@types/markdown-it-container": "^2.0.8",
     "@types/node": "^20.10.2",
+    "@vue/tsconfig": "^0.5.1",
     "markdown-it": "^13.0.2",
     "markdown-it-conditional-render": "^0.1.0",
     "markdown-it-container": "^3.0.0",
@@ -19,7 +20,15 @@
     "vitepress-plugin-tabs": "^0.5.0"
   },
   "dependencies": {
+    "@iconify-json/octicon": "^1.1.52",
+    "@nolebase/ui": "^1.24.1",
+    "@rive-app/canvas-lite": "^2.11.1",
+    "date-fns": "^3.6.0",
+    "md5": "^2.3.0",
+    "simple-git": "^3.23.0",
     "swiper": "^11.0.6",
+    "unocss": "^0.58.6",
+    "vue": "^3.4.21",
     "vue-silentbox": "^3.0.4"
   },
   "type": "module",
